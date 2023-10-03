@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        /* Basic CSS for page styling (you can customize this) */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            width: 20%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete {{patientrecord.name|capfirst}}'s Record</h2>
+        <a class="btn" href="{% url 'deletepatient' patientrecord.id %}">Comfirm</a>
+        <a class="btn" href="{% url 'patientrecord'%}">Cancel</a>
+    </div>
+</body>
+
+<footer>
+    <p>&copy; 2023 Othniel</p>
+</footer>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PatientRecord</title>
+    <style>
+        /* Basic CSS for table styling (customize as needed) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+        th, td{
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .container{
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        .btn {
+            display: block;
+            width: 30%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+        footer, a{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Patient Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Surename</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        {%for patientdata in patientrecord%}
+        <tbody>
+            <tr>
+                <td>{{patientdata.surename|capfirst}}</td>
+                <td>{{patientdata.name|capfirst}}</td>
+                <td>{{patientdata.age}}</td>
+                <td><a href="{% url 'updatepatient' patientdata.id %}">Update</a></td>
+                <td><a href="{% url 'comfirmdeletepatient' patientdata.id %}">Delete</a></td>
+            </tr>
+        </tbody>
+        {%endfor%}
+    </table>
+    <br><br>
+    <div class="container"></div>
+    <a class="btn" href="{% url 'addpatient' %}">Add Patient</a>
+    <a class="btn" href="{% url 'logout' %}">Logout</a>
+    </div>
+</body>
+<footer>
+    <p>&copy; 2023 Othniel</p>
+</footer>
+</html>
